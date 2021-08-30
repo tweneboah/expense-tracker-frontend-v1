@@ -1,25 +1,62 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { positions, Provider } from "react-alert";
+import AlertTemplate from "react-alert-template-basic";
+import NewRecord from "./components/Add/NewRecordForm";
+import Home from "./Pages/Home";
 
-function App() {
+import IncomeList from "./Pages/Income/IncomeList";
+import Navbar from "./components/Navigation/Navbar";
+import Profile from "./Pages/Users/Profile/Profile";
+import Register from "./Pages/Users/Register/Register";
+import Login from "./Pages/Users/Login/Login";
+import ExpensesList from "./Pages/Expenses/ExpensesList";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+
+import UserExpenses from "./Pages/Users/Profile/UserExpenses";
+import EditContent from "./components/EditContent/EditContent";
+import UserProfileExpList from "./Pages/Users/Profile/UserProfileExpList";
+import UserProfileIncList from "./Pages/Users/Profile/UserProfileIncList";
+import UpdateProfile from "./Pages/Users/Profile/UpdateProfile";
+
+const options = {
+  timeout: 50000,
+  position: positions.BOTTOM_CENTER,
+};
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider template={AlertTemplate} {...options}>
+      <BrowserRouter>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/dashboard" component={Dashboard} />
+          <Route
+            exact
+            path="/user-profile-expenses"
+            component={UserProfileExpList}
+          />
+          <Route
+            exact
+            path="/user-profile-income"
+            component={UserProfileIncList}
+          />
+
+          <Route exact path="/update-profile" component={UpdateProfile} />
+
+          <Route exact path="/edit" component={EditContent} />
+          <Route exact path="/user-expenses" component={UserExpenses} />
+          <Route exact path="/add-expense" component={NewRecord} />
+
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/register" component={Register} />
+          <Route exact path="/profile" component={Profile} />
+          <Route exact path="/incomes" component={IncomeList} />
+          <Route exact path="/expenses" component={ExpensesList} />
+        </Switch>
+      </BrowserRouter>
+    </Provider>
   );
-}
+};
 
 export default App;
