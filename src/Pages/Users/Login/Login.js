@@ -40,7 +40,10 @@ const Login = ({ history }) => {
     if (isLogin) history.push("/profile");
   }, 3000);
   return (
-    <section className="position-relative py-5 overflow-hidden">
+    <section
+      style={{ height: "100vh" }}
+      className="position-relative py-5  overflow-hidden bg-warning"
+    >
       <div className="d-none d-md-block position-absolute top-0 start-0 bg-primary w-75 h-100"></div>
       <div className="d-md-none position-absolute top-0 start-0 bg-primary w-100 h-100"></div>
       <div className="container position-relative mx-auto">
@@ -48,13 +51,9 @@ const Login = ({ history }) => {
           <div className="col-12 col-lg-5 mb-5">
             <div>
               <h2 className="display-5 fw-bold mb-4 text-white">
-                Lorem ipsum dolor sit amet consectutar domor at elis
+                Keep Track of what you are spending
               </h2>
-              <p className="mb-0 text-white">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Pellentesque massa nibh, pulvinar vitae aliquet nec, accumsan
-                aliquet orci.
-              </p>
+              <hr className="text-warning w-100" />
             </div>
           </div>
           <div className="col-12 col-lg-5 ms-auto">

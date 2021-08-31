@@ -48,10 +48,9 @@ const Register = ({ history }) => {
         <div className="row align-items-center">
           <div className="col-12 col-lg-5 mb-5">
             <div>
-              <h2 className="display-5 fw-bold mb-4 text-white">Register</h2>
-              <p className="mb-0 text-white">
-                Register to have access to this application
-              </p>
+              <h2 className="display-5 fw-bold mb-4 text-white">
+                Keep Track of your income and expenses flow
+              </h2>
             </div>
           </div>
           <div className="col-12 col-lg-5 ms-auto">
