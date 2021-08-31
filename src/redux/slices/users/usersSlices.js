@@ -65,6 +65,20 @@ export const loginUserAction = createAsyncThunk(
   }
 );
 
+//Logout action
+export const logoutAction = createAsyncThunk(
+  "/user/logout",
+  async (payload, { rejectWithValue, getState, dispatch }) => {
+    try {
+      localStorage.removeItem("userInfo");
+    } catch (error) {
+      if (!error?.response) {
+        throw error;
+      }
+      return rejectWithValue(error?.response?.data);
+    }
+  }
+);
 // Profile
 export const userProfileAction = createAsyncThunk(
   "user/profile",
@@ -180,6 +194,21 @@ const usersSlices = createSlice({
       state.userLoading = false;
       state.userAppErr = action?.payload?.message;
       state.userServerErr = action?.error?.message;
+    });
+    //logout
+    builder.addCase(logoutAction.pending, (state, action) => {
+      state.userLoading = false;
+    });
+    builder.addCase(logoutAction.fulfilled, (state, action) => {
+      state.userAuth = undefined;
+      state.userLoading = false;
+      state.userAppErr = undefined;
+      state.userServerErr = undefined;
+    });
+    builder.addCase(logoutAction.rejected, (state, action) => {
+      state.userAppErr = action?.payload?.message;
+      state.userServerErr = action?.error?.message;
+      state.userLoading = false;
     });
     // Profile
     builder.addCase(userProfileAction.pending, (state, action) => {

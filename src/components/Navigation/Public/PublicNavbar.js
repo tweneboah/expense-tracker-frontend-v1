@@ -3,15 +3,10 @@ import { Link } from "react-router-dom";
 const PublicNavbar = () => {
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light py-4">
+      <nav className="navbar navbar-expand-lg navbar-light ">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            <img
-              className="img-fluid"
-              src="bootstrap5-plain-assets/logos/plainb-logo.svg"
-              alt=""
-              width="96px"
-            />
+            <i class="bi bi-currency-exchange fs-1 text-success"></i>
           </Link>
           <button
             className="navbar-toggler"
@@ -31,14 +26,18 @@ const PublicNavbar = () => {
                   Home
                 </Link>
               </li>
-              <li className="nav-item me-4">
-                <a className="nav-link">Company</a>
-              </li>
-              <li className="nav-item me-4">
-                <a className="nav-link">Record Income</a>
+              <li className="nav-item">
+                <Link
+                  to="/add-expense"
+                  className="btn  btn-outline-danger me-2"
+                >
+                  New Expense
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link">Testimonials</a>
+                <Link to="/add-income" className="btn btn-outline-primary me-2">
+                  Record Income
+                </Link>
               </li>
             </ul>
             <ul className="navbar-nav mt-3 mt-lg-0 mb-3 mb-lg-0 d-lg-none">
@@ -47,9 +46,6 @@ const PublicNavbar = () => {
               </li>
               <li className="nav-item me-4">
                 <a className="nav-link">Company</a>
-              </li>
-              <li className="nav-item me-4">
-                <a className="nav-link">Services</a>
               </li>
             </ul>
             <div className="ms-lg-auto">

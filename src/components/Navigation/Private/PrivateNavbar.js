@@ -1,18 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../../redux/slices/users/usersSlices";
 
 const PrivateNavbar = () => {
+  const dispatch = useDispatch();
   return (
     <>
-      <nav className="navbar navbar-expand-lg navbar-light py-4">
+      <nav className="navbar navbar-expand">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            <img
-              className="img-fluid"
-              src="bootstrap5-plain-assets/logos/plainb-logo.svg"
-              alt=""
-              width="96px"
-            />
+            <i class="bi bi-currency-exchange fs-1 text-success"></i>
           </Link>
           <button
             className="navbar-toggler"
@@ -34,12 +32,12 @@ const PrivateNavbar = () => {
               </li>
               <li className="nav-item me-4">
                 <Link to="/expenses" className="nav-link">
-                  Expenses List
+                  Expenses
                 </Link>
               </li>
               <li className="nav-item me-4">
                 <Link to="/incomes" className="nav-link">
-                  Income List
+                  Income
                 </Link>
               </li>
               <li className="nav-item">
@@ -74,9 +72,12 @@ const PrivateNavbar = () => {
               <Link to="/add-income" className="btn btn-success me-2">
                 New Income
               </Link>
-              <Link to="/register" className="btn btn-danger me-2">
+              <button
+                onClick={() => dispatch(logoutAction())}
+                className="btn btn-danger me-2"
+              >
                 Logout
-              </Link>
+              </button>
             </div>
           </div>
         </div>
