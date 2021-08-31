@@ -20,15 +20,8 @@ const Register = ({ history }) => {
   const dispatch = useDispatch();
   //store state
   const users = useSelector(state => state?.users);
-  const {
-    userAuth,
-    loading,
-    appErr,
-    serverErr,
-    isLogin,
-    isRegistered,
-    registered,
-  } = users;
+  const { userLoading, userAppErr, userServerErr, isRegistered, registered } =
+    users;
   //initialize form
   const formik = useFormik({
     initialValues: {
@@ -38,7 +31,6 @@ const Register = ({ history }) => {
       lastname: "",
     },
     onSubmit: values => {
-      console.log(values);
       dispatch(registerUserAction(values));
     },
     validationSchema: formSchema,
@@ -72,8 +64,11 @@ const Register = ({ history }) => {
                   <SuccessMessage msg="Register Successfully. You will be redirected soon" />
                 )}
                 {/* Display Err */}
-                {serverErr || appErr ? (
-                  <ErrorDisplayMessage error={{ serverErr, appErr }} />
+                {userServerErr || userAppErr ? (
+                  <div class="alert alert-danger" role="alert">
+                    {userServerErr}
+                    {userAppErr}
+                  </div>
                 ) : null}
                 <input
                   value={formik.values.firstname}
@@ -123,8 +118,8 @@ const Register = ({ history }) => {
                 <div className="text-danger mb-2">
                   {formik.touched.password && formik.errors.password}
                 </div>
-                {/* Loading */}
-                {loading ? (
+                {/* userLoading */}
+                {userLoading ? (
                   <DisabledButton />
                 ) : (
                   <button

@@ -88,15 +88,11 @@ const NewRecord = ({ history }) => {
                   <form onSubmit={formik.handleSubmit}>
                     <span className="text-muted">Expense</span>
                     <h2 className="mb-4 fw-light">Record New Expense</h2>
-
                     {/* Display income Err */}
-                    {incAppErr || incServerErr ? (
-                      <ErrorDisplayMessage
-                        error={{
-                          incAppErr,
-                          incServerErr,
-                        }}
-                      />
+                    {expServerErr || expAppErr || incServerErr || incAppErr ? (
+                      <div className="alert alert-danger" role="alert">
+                        {expServerErr} {expAppErr} {incServerErr} {incAppErr}
+                      </div>
                     ) : null}
                     <div className="mb-3 input-group">
                       <input

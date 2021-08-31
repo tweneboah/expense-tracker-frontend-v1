@@ -14,17 +14,18 @@ function LoadingComponent() {
   let [color, setColor] = useState("#ffffff");
 
   return (
-    <div className="sweet-loading">
-      <button onClick={() => setLoading(!loading)}>Toggle Loader</button>
-      <input
-        value={color}
-        onChange={input => setColor(input.target.value)}
-        placeholder="Color of the loader"
-      />
-
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        backgroundColor: "black",
+      }}
+    >
       <ClipLoader color={color} loading={loading} css={override} size={150} />
     </div>
   );
 }
 
-export default App;
+export default LoadingComponent;

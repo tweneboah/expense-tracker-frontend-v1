@@ -22,7 +22,7 @@ const Login = ({ history }) => {
 
   const users = useSelector(state => state?.users);
 
-  const { userAuth, loading, appErr, serverErr, isLogin } = users;
+  const { userAuth, userLoading, userAppErr, userServerErr, isLogin } = users;
   //initialize form
   const formik = useFormik({
     initialValues: {
@@ -61,13 +61,11 @@ const Login = ({ history }) => {
             <div className="p-5 bg-light rounded text-center">
               <span className="text-muted">Sign In</span>
               <h3 className="fw-bold mb-5">Login to your account</h3>
-              {/* Success msg */}
-              {userAuth && (
-                <SuccessMessage msg="Login Successfully. You will be redirected soon" />
-              )}
               {/* Display Err */}
-              {serverErr || appErr ? (
-                <ErrorDisplayMessage error={{ serverErr, appErr }} />
+              {userAppErr || userServerErr ? (
+                <div class="alert alert-danger" role="alert">
+                  {userAppErr || userServerErr}
+                </div>
               ) : null}
               <form onSubmit={formik.handleSubmit} _lpchecked="1">
                 <input
@@ -95,7 +93,7 @@ const Login = ({ history }) => {
                   {formik.touched.password && formik.errors.password}
                 </div>
 
-                {loading ? (
+                {userLoading ? (
                   <DisabledButton />
                 ) : (
                   <div>
@@ -105,31 +103,6 @@ const Login = ({ history }) => {
                     >
                       Login
                     </button>
-                    <a className="link-secondary d-inline-block mb-4" href="#">
-                      <small>Forgot password?</small>
-                    </a>
-                    <a
-                      className="d-flex justify-content-center align-items-center text-muted mb-2 py-2 bg-white rounded w-100 text-decoration-none"
-                      href="/"
-                    >
-                      <img
-                        className="img-fluid"
-                        src="bootstrap5-plain-assets/socials/facebook.svg"
-                        alt=""
-                      />
-                      <span className="text-muted">Sign in with Facebook</span>
-                    </a>
-                    <a
-                      className="d-flex justify-content-center align-items-center text-muted mb-2 py-2 bg-white rounded w-100 text-decoration-none"
-                      href="/"
-                    >
-                      <img
-                        className="img-fluid"
-                        src="bootstrap5-plain-assets/socials/twitter.svg"
-                        alt=""
-                      />
-                      <span className="text-muted">Sign in with Twitter</span>
-                    </a>
                   </div>
                 )}
               </form>

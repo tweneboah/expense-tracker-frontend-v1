@@ -17,6 +17,8 @@ import EditContent from "./components/EditContent/EditContent";
 import UserProfileExpList from "./Pages/Users/Profile/UserProfileExpList";
 import UserProfileIncList from "./Pages/Users/Profile/UserProfileIncList";
 import UpdateProfile from "./Pages/Users/Profile/UpdateProfile";
+import AddIncome from "./Pages/Income/AddIncome";
+import AddExpense from "./Pages/Expenses/AddExpense";
 
 const options = {
   timeout: 50000,
@@ -46,7 +48,8 @@ const App = () => {
 
           <Route exact path="/edit" component={EditContent} />
           <Route exact path="/user-expenses" component={UserExpenses} />
-          <Route exact path="/add-expense" component={NewRecord} />
+          <Route exact path="/add-expense" component={AddExpense} />
+          <Route exact path="/add-income" component={AddIncome} />
 
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />

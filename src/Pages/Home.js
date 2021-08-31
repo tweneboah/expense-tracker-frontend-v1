@@ -1,6 +1,6 @@
 import React from "react";
 import PublicNavbar from "../components/Navigation/Public/PublicNavbar";
-
+import bg from "../img/data.svg";
 const Home = () => {
   return (
     <>
@@ -8,7 +8,7 @@ const Home = () => {
         <img
           className="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid"
           style={{ objectFit: "cover" }}
-          src="https://images.pexels.com/photos/8802433/pexels-photo-8802433.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+          src={bg}
           alt=""
         />
         <div className="position-relative">
@@ -17,22 +17,22 @@ const Home = () => {
               <div className="col-12 col-lg-5 ms-auto">
                 <div className="mb-5">
                   <h2 className="display-4 fw-bold mb-5">
-                    Take care of your performance every day.
+                    Keep Track of Your Income & Expenses
                   </h2>
                   <p className="lead text-muted mb-5">
-                    Build a well-presented brand that everyone will love. Take
-                    care to develop resources continually and integrity them
-                    with previous projects.
+                    View all your income and expenses flow from your team in one
+                    dashboard
                   </p>
                   <div className="d-flex flex-wrap">
                     <a className="btn btn-primary me-2 mb-2 mb-sm-0" href="#">
                       Track your performance
                     </a>
                     <a
+                      target="_blank"
                       className="btn btn-outline-secondary mb-2 mb-sm-0"
-                      href="#"
+                      href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw"
                     >
-                      Learn More
+                      Video Tutorial
                     </a>
                   </div>
                 </div>
