@@ -19,6 +19,9 @@ import UserProfileIncList from "./Pages/Users/Profile/UserProfileIncList";
 import UpdateProfile from "./Pages/Users/Profile/UpdateProfile";
 import AddIncome from "./Pages/Income/AddIncome";
 import AddExpense from "./Pages/Expenses/AddExpense";
+import PrivateProtectRoute from "./components/Navigation/PrivateProtectRoute";
+import AdminRoute from "./components/Navigation/AdminRoute";
+import NotAdmin from "./components/NotAdmin/NotAdmin";
 
 const options = {
   timeout: 50000,
@@ -32,8 +35,8 @@ const App = () => {
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route
+          <AdminRoute exact path="/dashboard" component={Dashboard} />
+          <PrivateProtectRoute
             exact
             path="/user-profile-expenses"
             component={UserProfileExpList}
@@ -43,19 +46,36 @@ const App = () => {
             path="/user-profile-income"
             component={UserProfileIncList}
           />
+          <Route exact path="/not-admin" component={NotAdmin} />
 
-          <Route exact path="/update-profile" component={UpdateProfile} />
+          <PrivateProtectRoute
+            exact
+            path="/update-profile"
+            component={UpdateProfile}
+          />
 
-          <Route exact path="/edit" component={EditContent} />
-          <Route exact path="/user-expenses" component={UserExpenses} />
-          <Route exact path="/add-expense" component={AddExpense} />
-          <Route exact path="/add-income" component={AddIncome} />
+          <PrivateProtectRoute exact path="/edit" component={EditContent} />
+          <PrivateProtectRoute
+            exact
+            path="/user-expenses"
+            component={UserExpenses}
+          />
+          <PrivateProtectRoute
+            exact
+            path="/add-expense"
+            component={AddExpense}
+          />
+          <PrivateProtectRoute exact path="/add-income" component={AddIncome} />
 
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
-          <Route exact path="/profile" component={Profile} />
-          <Route exact path="/incomes" component={IncomeList} />
-          <Route exact path="/expenses" component={ExpensesList} />
+          <PrivateProtectRoute exact path="/profile" component={Profile} />
+          <PrivateProtectRoute exact path="/incomes" component={IncomeList} />
+          <PrivateProtectRoute
+            exact
+            path="/expenses"
+            component={ExpensesList}
+          />
         </Switch>
       </BrowserRouter>
     </Provider>

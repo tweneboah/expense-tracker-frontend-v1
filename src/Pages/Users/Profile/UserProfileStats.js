@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import useCurrencyFormatter from "../../../hooks/useCurrencyFormatter";
 
-import { fetchAccountStatsAction } from "../../../redux/slices/accountStats/accountStatsSlices";
-
 const UserProfileStats = ({
   avgExp,
   totalExp,
@@ -16,17 +14,10 @@ const UserProfileStats = ({
   maxInc,
   numOfTransInc,
 }) => {
-  const dispatch = useDispatch();
   //format curr
   const formattedAmt = useCurrencyFormatter("USD", totalExp);
   const formattedAmtInc = useCurrencyFormatter("USD", totalInc);
   //format date
-
-  useEffect(() => {
-    dispatch(fetchAccountStatsAction());
-  }, []);
-  const statistics = useSelector(state => state.statistics);
-  const { loading, appErr, serverErr, stats } = statistics;
 
   return (
     <section class="py-6">

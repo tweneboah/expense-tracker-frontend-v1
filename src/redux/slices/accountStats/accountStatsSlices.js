@@ -36,19 +36,19 @@ const incomeSlices = createSlice({
   extraReducers: builder => {
     //fetch all
     builder.addCase(fetchAccountStatsAction.pending, (state, action) => {
-      state.loading = true;
+      state.statsLoading = true;
       state.appErr = undefined;
       state.serverErr = undefined;
     });
     builder.addCase(fetchAccountStatsAction.fulfilled, (state, action) => {
-      state.loading = false;
+      state.statsLoading = false;
       state.stats = action?.payload;
       state.appErr = undefined;
       state.serverErr = undefined;
       state.isIncomeCreated = false;
     });
     builder.addCase(fetchAccountStatsAction.rejected, (state, action) => {
-      state.loading = false;
+      state.statsLoading = false;
       state.appErr = action?.payload?.message;
       state.serverErr = action?.error?.message;
     });

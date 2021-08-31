@@ -11,11 +11,11 @@ const Dashboard = () => {
     dispatch(fetchAccountStatsAction());
   }, []);
   const statistics = useSelector(state => state.statistics);
-  const { loading, appErr, serverErr, stats } = statistics;
-  console.log(stats);
+  const { statsLoading, appErr, serverErr, stats } = statistics;
+  console.log({ statsLoading, appErr, serverErr, stats });
   const exp = stats?.expensesStats[0];
   const inc = stats?.incomeStats[0];
-  console.log(stats);
+
   return (
     <>
       {/* <h1>NET: {stats?.profit}</h1>
@@ -32,7 +32,7 @@ const Dashboard = () => {
         maxInc={inc?.maxInc}
       /> */}
 
-      {loading ? (
+      {statsLoading ? (
         <LoadingComponent />
       ) : appErr || serverErr ? (
         <div class="alert alert-danger" role="alert">

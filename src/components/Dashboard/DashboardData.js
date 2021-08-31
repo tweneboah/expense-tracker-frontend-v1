@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import useCurrencyFormatter from "../../hooks/useCurrencyFormatter";
 
 import { fetchAccountStatsAction } from "../../redux/slices/accountStats/accountStatsSlices";
+import DataGrap from "./DataGrap";
 
 const DashboardData = ({
   avgExp,
@@ -20,16 +21,20 @@ const DashboardData = ({
   //format curr
   const formattedAmt = useCurrencyFormatter("USD", totalExp);
   //format date
-
-  useEffect(() => {
-    dispatch(fetchAccountStatsAction());
-  }, []);
-  const statistics = useSelector(state => state.statistics);
-  const { loading, appErr, serverErr, stats } = statistics;
-
   return (
     <section class="py-6">
       <div class="container">
+        {/* Grpah */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            marginBottom: "20px",
+          }}
+        >
+          <DataGrap income={totalInc} expenses={totalExp} />
+        </div>
         <div class="row">
           <div class="col-12 col-md-6 mb-6">
             <div class="p-8 border rounded-2">

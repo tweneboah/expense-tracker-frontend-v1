@@ -7,7 +7,7 @@ const DataGrap = ({ income, expenses }) => {
     labels: ["Income", "Expenses"],
     datasets: [
       {
-        label: "# of Votes",
+        label: "# expenses",
         data: [income, expenses],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -40,8 +40,8 @@ const DataGrap = ({ income, expenses }) => {
         flexDirection: "column",
       }}
     >
-      <div className="header">
-        <h1 className="title">Pie Chart</h1>
+      <div>
+        <h3> Overview</h3>
       </div>
       <Pie data={data} />
     </div>
