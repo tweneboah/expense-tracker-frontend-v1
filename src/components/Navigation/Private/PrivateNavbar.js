@@ -7,66 +7,49 @@ const PrivateNavbar = () => {
   const dispatch = useDispatch();
   return (
     <>
-      <nav className="navbar navbar-expand">
-        <div className="container-fluid">
+      <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <div class="container-fluid">
           <Link to="/" className="navbar-brand">
-            <i class="bi bi-currency-exchange fs-1 text-success"></i>
+            <i class="bi bi-currency-exchange fs-1 text-warning "></i>
           </Link>
           <button
-            className="navbar-toggler"
+            class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#nav04"
-            aria-controls="nav04"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="nav04">
-            <ul className="d-none d-lg-flex navbar-nav mx-auto mt-3 mt-lg-0 mb-3 mb-lg-0 position-absolute top-50 start-50 translate-middle">
-              <li className="nav-item me-4">
-                <Link to="/" className="nav-link">
-                  Home
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <Link to="/expenses" className="nav-link active">
+                  Expenses List
                 </Link>
               </li>
-              <li className="nav-item me-4">
-                <Link to="/expenses" className="nav-link">
-                  Expenses
+
+              <li class="nav-item">
+                <Link to="/incomes" className="nav-link active">
+                  Income List
                 </Link>
               </li>
-              <li className="nav-item me-4">
-                <Link to="/incomes" className="nav-link">
-                  Income
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link to="/profile" className="btn btn-outline-secondary me-2">
-                  Profile
-                </Link>
-              </li>
-              <li className="nav-item">
-                <Link
-                  to="/dashboard"
-                  className="btn btn-outline-secondary me-2"
-                >
+
+              <li class="nav-item mb-2">
+                <Link to="/dashboard" className="btn  btn-outline-warning me-2">
                   Dashboard
                 </Link>
               </li>
-            </ul>
-            <ul className="navbar-nav mt-3 mt-lg-0 mb-3 mb-lg-0 d-lg-none">
-              <li className="nav-item me-4">
-                <a className="nav-link">About</a>
-              </li>
-              <li className="nav-item me-4">
-                <a className="nav-link">Company</a>
-              </li>
-              <li className="nav-item me-4">
-                <a className="nav-link">Services</a>
+              <li class="nav-item">
+                <Link to="/profile" className="btn  btn-outline-primary me-2">
+                  Profile
+                </Link>
               </li>
             </ul>
-            <div className="ms-lg-auto">
-              <Link to="/add-expense" className="btn btn-warning me-2">
+            <form class="d-flex">
+              <Link to="/add-expense" className="btn btn-danger me-2">
                 New Expense
               </Link>
               <Link to="/add-income" className="btn btn-success me-2">
@@ -74,11 +57,11 @@ const PrivateNavbar = () => {
               </Link>
               <button
                 onClick={() => dispatch(logoutAction())}
-                className="btn btn-danger me-2"
+                className="btn btn-warning me-2"
               >
                 Logout
               </button>
-            </div>
+            </form>
           </div>
         </div>
       </nav>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import ContentDetails from "../../../components/ContentDetails/ContentDetails";
 
 import LoadingComponent from "../../../components/LoadingComponent";
@@ -22,8 +23,16 @@ const UserProfileExpList = () => {
           <div className="position-relative border rounded-2">
             <a className="position-absolute top-0 end-0 mt-4 me-4" href="#"></a>
             <div className="pt-8 px-8 mb-8">
-              <h6 className="mb-0">Recent transactions</h6>
-              <p className="mb-0">Lorem ipsum dolor sit amet consectutar</p>
+              <h6 className="mb-0 fs-3">Recent Expense transactions</h6>
+              <p className="mb-0">
+                Below is the history of your expense transactions records
+              </p>
+              <Link
+                to="/add-expense"
+                className="btn  btn-outline-danger me-2 m-2"
+              >
+                New Expense
+              </Link>
             </div>
             <table className="table">
               <thead>

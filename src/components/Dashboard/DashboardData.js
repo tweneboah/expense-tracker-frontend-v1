@@ -16,10 +16,13 @@ const DashboardData = ({
   minInc,
   maxInc,
   numOfTransInc,
+  netProfit,
 }) => {
   const dispatch = useDispatch();
   //format curr
-  const formattedAmt = useCurrencyFormatter("USD", totalExp);
+  const formattedTotalExp = useCurrencyFormatter("USD", totalExp);
+  const formattedTotalInc = useCurrencyFormatter("USD", totalInc);
+  const formattedNetProfit = useCurrencyFormatter("USD", netProfit);
   //format date
   return (
     <section class="py-6">
@@ -33,7 +36,12 @@ const DashboardData = ({
             marginBottom: "20px",
           }}
         >
+          {/* Grpah */}
           <DataGrap income={totalInc} expenses={totalExp} />
+        </div>
+        {/* Net Profit */}
+        <div style={{ textAlign: "center", margin: "20px" }}>
+          <h2 className="text-success">Net Profit : {formattedNetProfit}</h2>
         </div>
         <div class="row">
           <div class="col-12 col-md-6 mb-6">
@@ -44,9 +52,11 @@ const DashboardData = ({
                   style={{ width: "40px", height: "40px" }}
                 ></span>
                 {/* Expenses Start */}
-                <span class="badge bg-light text-primary">Expenses</span>
+                <span class="badge fs-2 bg-light text-danger">
+                  Total Expenses
+                </span>
               </div>
-              <h1 class="mb-4">{formattedAmt}</h1>
+              <h1 class="mb-4">{formattedTotalExp}</h1>
               <p class="mb-0">
                 <span>Number of Transactions</span>
                 <span class="text-danger ms-1">
@@ -85,11 +95,11 @@ const DashboardData = ({
                 ></span>
 
                 {/* Income Start */}
-                <span class="badge bg-primary-light text-primary">
-                  Income Transactions
+                <span class="badge fs-2 bg-primary-light text-primary">
+                  Total Income
                 </span>
               </div>
-              <h1 class="mb-4">{totalInc}</h1>
+              <h1 class="mb-4">{formattedTotalInc}</h1>
 
               <p class="mb-0">
                 <span>Number of Transactions</span>

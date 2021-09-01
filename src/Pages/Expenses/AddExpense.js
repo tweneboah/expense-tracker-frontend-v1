@@ -3,10 +3,11 @@ import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
 import * as Yup from "yup";
 import moneySVG from "../../img/money.svg";
-
+import { useHistory } from "react-router-dom";
 import { addNewExpAction } from "../../redux/slices/expenses/expenseAction";
 import DisabledButton from "../../components/DisabledButton";
 import redirectUser from "../../utils/redirect";
+import navigate from "../../utils/navigate";
 
 //Form validation
 const formSchema = Yup.object({
@@ -15,9 +16,10 @@ const formSchema = Yup.object({
   amount: Yup.number().required("Amount is required"),
 });
 
-const AddExpense = ({ history }) => {
+const AddExpense = () => {
   //dispatch action
   const dispatch = useDispatch();
+  const history = useHistory();
   //income
 
   //expense
@@ -37,9 +39,10 @@ const AddExpense = ({ history }) => {
   });
 
   //Redirect
+
   useEffect(() => {
     if (isExpCreated) {
-      redirectUser(history, "expenses");
+      navigate(history, "user-profile-expenses", undefined);
     }
   }, [isExpCreated]);
   return (

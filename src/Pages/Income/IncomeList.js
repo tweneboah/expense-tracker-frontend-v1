@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import ContentDetails from "../../components/ContentDetails/ContentDetails";
 import ErrorDisplayMessage from "../../components/ErrorDisplayMessage";
 
@@ -40,13 +40,14 @@ const IncomeList = ({ location: { state } }) => {
         <section className="py-6">
           <div className="container-fluid">
             <div className="position-relative border rounded-2">
-              <a
-                className="position-absolute top-0 end-0 mt-4 me-4"
-                href="#"
-              ></a>
               <div className="pt-8 px-8 mb-8">
-                <h6 className="mb-0">Recent transactions</h6>
-                <p className="mb-0">Lorem ipsum dolor sit amet consectutar</p>
+                <h6 className="mb-0 fs-3">Recent Income transactions</h6>
+                <p className="mb-0">
+                  Below is the history of your income transactions records
+                </p>
+                <Link to="/add-income" className="btn  btn-success me-2 m-2">
+                  New Income
+                </Link>
               </div>
               <table className="table">
                 <thead>
@@ -54,7 +55,7 @@ const IncomeList = ({ location: { state } }) => {
                     {!dataType && (
                       <th scope="col">
                         <button className="btn d-flex align-items-centerr text-uppercase">
-                          <small>Withdrawed By</small>
+                          <small className="text-center">Deposited By</small>
                         </button>
                       </th>
                     )}

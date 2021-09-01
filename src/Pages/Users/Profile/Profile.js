@@ -94,12 +94,13 @@ const Profile = () => {
                     </span>
                   </h6>
                   <p className="mb-0">{profile?.email}</p>
-                  <p className="mb-0">Date Joined:</p>
+                  <p className="mb-0">Date Joined: 12-Jan-1999</p>
                   <button
                     onClick={() => navigate(history, "update-profile", profile)}
                     className="btn"
                   >
-                    Edit
+                    Edit Profile
+                    <i class="bi bi-pen fs-3 m-3 text-primary"></i>
                   </button>
                 </div>
                 <DataGraph
@@ -130,7 +131,7 @@ const Profile = () => {
                   <span>View Expenses History</span>
                 </button>
                 <button
-                  onClick={() => navigate(history, "user-profile-expenses", "")}
+                  onClick={() => navigate(history, "user-profile-income", "")}
                   className="btn w-100 btn-outline-success d-flex align-items-center justify-content-center"
                 >
                   <span>View Income History</span>

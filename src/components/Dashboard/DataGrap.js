@@ -4,11 +4,11 @@ import React from "react";
 
 const DataGrap = ({ income, expenses }) => {
   const data = {
-    labels: ["Income", "Expenses"],
+    labels: ["Expenses", "Income"],
     datasets: [
       {
         label: "# expenses",
-        data: [income, expenses],
+        data: [expenses, income],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
@@ -38,10 +38,11 @@ const DataGrap = ({ income, expenses }) => {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
+        marginTop: "40px",
       }}
     >
       <div>
-        <h3> Overview</h3>
+        <h3> Transactions</h3>
       </div>
       <Pie data={data} />
     </div>

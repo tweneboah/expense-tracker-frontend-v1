@@ -39,18 +39,21 @@ const Dashboard = () => {
           {serverErr} {appErr}
         </div>
       ) : (
-        <DashboardData
-          numOfTransExp={exp?.totalRecords}
-          avgExp={exp?.averageExp}
-          totalExp={exp?.totalExp}
-          minExp={exp?.minExp}
-          maxExp={exp?.maxExp}
-          numOfTransInc={inc?.totalRecords}
-          avgInc={inc?.averageInc}
-          totalInc={inc?.totalInc}
-          minInc={inc?.minInc}
-          maxInc={inc?.maxInc}
-        />
+        <>
+          <DashboardData
+            numOfTransExp={exp?.totalRecords}
+            avgExp={exp?.averageExp}
+            totalExp={exp?.totalExp}
+            minExp={exp?.minExp}
+            maxExp={exp?.maxExp}
+            numOfTransInc={inc?.totalRecords}
+            avgInc={inc?.averageInc}
+            totalInc={inc?.totalInc}
+            minInc={inc?.minInc}
+            maxInc={inc?.maxInc}
+            netProfit={stats?.profit}
+          />
+        </>
       )}
     </>
   );

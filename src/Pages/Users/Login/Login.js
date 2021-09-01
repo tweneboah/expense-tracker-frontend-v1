@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useFormik } from "formik";
 import { useDispatch, useSelector } from "react-redux";
-import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import * as Yup from "yup";
 import { loginUserAction } from "../../../redux/slices/users/usersSlices";
 import DisabledButton from "../../../components/DisabledButton";
-import ErrorDisplayMessage from "../../../components/ErrorDisplayMessage";
-import SuccessMessage from "../../../components/SuccessMessage";
+import navigate from "../../../utils/navigate";
 
 //Form validation
 const formSchema = Yup.object({
@@ -14,10 +13,10 @@ const formSchema = Yup.object({
   password: Yup.string().required("Password is required"),
 });
 
-const Login = ({ history }) => {
+const Login = () => {
   //dispatch action
   const dispatch = useDispatch();
-
+  const history = useHistory();
   //store state
 
   const users = useSelector(state => state?.users);
@@ -36,15 +35,17 @@ const Login = ({ history }) => {
   });
 
   //Redirect
-  setTimeout(() => {
-    if (isLogin) history.push("/profile");
-  }, 3000);
+  useEffect(() => {
+    if (isLogin) {
+      navigate(history, "profile", undefined);
+    }
+  }, [isLogin]);
   return (
     <section
       style={{ height: "100vh" }}
       className="position-relative py-5  overflow-hidden bg-warning"
     >
-      <div className="d-none d-md-block position-absolute top-0 start-0 bg-primary w-75 h-100"></div>
+      <div className="d-none d-md-block position-absolute top-0 start-0 bg-dark w-75 h-100"></div>
       <div className="d-md-none position-absolute top-0 start-0 bg-primary w-100 h-100"></div>
       <div className="container position-relative mx-auto">
         <div className="row align-items-center">

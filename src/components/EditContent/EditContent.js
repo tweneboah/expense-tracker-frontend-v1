@@ -10,6 +10,7 @@ import { updateExpenseAction } from "../../redux/slices/expenses/expenseAction";
 import { updateIncomeAction } from "../../redux/slices/income/incomeSlices";
 import DisabledButton from "../DisabledButton";
 import redirectUser from "../../utils/redirect";
+import navigate from "../../utils/navigate";
 
 //Form validation
 const formSchema = Yup.object({
@@ -58,10 +59,10 @@ const EditContent = ({ location: { state } }) => {
   //redirect
   useEffect(() => {
     if (isExpUpdated) {
-      redirectUser(history, "expenses");
+      navigate(history, "user-profile-expenses", undefined);
     }
     if (isIncUpdated) {
-      redirectUser(history, "incomes");
+      navigate(history, "user-profile-income", undefined);
     }
   }, [isExpUpdated, isIncUpdated]);
   return (

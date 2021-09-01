@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import ContentDetails from "../../components/ContentDetails/ContentDetails";
 import ErrorDisplayMessage from "../../components/ErrorDisplayMessage";
 import LoadingComponent from "../../components/Loading/Loading";
@@ -47,16 +48,16 @@ const ExpensesList = () => {
                 href="#"
               ></a>
               <div className="pt-8 px-8 mb-8">
-                <hr />
-                <h6 className="mb-0">
-                  Total Records: {expenseList?.docs?.length}
-                </h6>
-                <h6 className="mb-0">Sum: {totalExp?.sumTotal}</h6>
-                <h6 className="mb-0">Average: {totalExp?.avg}</h6>
-                <h6 className="mb-0">Maximum: {totalExp?.max}</h6>
-
-                <h6 className="mb-0">Minimum: {totalExp?.min}</h6>
-                <hr />
+                <h6 className="mb-0 fs-3">Recent Expense transactions</h6>
+                <p className="mb-0">
+                  Below is the history of your expense transactions records
+                </p>
+                <Link
+                  to="/add-expense"
+                  className="btn  btn-outline-danger me-2 m-2"
+                >
+                  New Expense
+                </Link>
               </div>
               <table className="table">
                 <thead>

@@ -12,7 +12,6 @@ import Login from "./Pages/Users/Login/Login";
 import ExpensesList from "./Pages/Expenses/ExpensesList";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 
-import UserExpenses from "./Pages/Users/Profile/UserExpenses";
 import EditContent from "./components/EditContent/EditContent";
 import UserProfileExpList from "./Pages/Users/Profile/UserProfileExpList";
 import UserProfileIncList from "./Pages/Users/Profile/UserProfileIncList";
@@ -55,11 +54,11 @@ const App = () => {
           />
 
           <PrivateProtectRoute exact path="/edit" component={EditContent} />
-          <PrivateProtectRoute
+          {/* <PrivateProtectRoute
             exact
             path="/user-expenses"
             component={UserExpenses}
-          />
+          /> */}
           <PrivateProtectRoute
             exact
             path="/add-expense"

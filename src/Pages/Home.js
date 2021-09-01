@@ -1,12 +1,12 @@
 import React from "react";
-import PublicNavbar from "../components/Navigation/Public/PublicNavbar";
+import { Link } from "react-router-dom";
 import bg from "../img/data.svg";
 const Home = () => {
   return (
     <>
       <section className="position-relative pb-5">
         <img
-          className="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid"
+          className="d-none d-lg-block position-absolute top-0 start-0 bottom-0 w-50 h-100 img-fluid "
           style={{ objectFit: "cover" }}
           src={bg}
           alt=""
@@ -24,18 +24,24 @@ const Home = () => {
                     dashboard
                   </p>
                   <div className="d-flex flex-wrap">
-                    <a className="btn btn-primary me-2 mb-2 mb-sm-0" href="#">
+                    <Link
+                      to="/profile"
+                      className="btn btn-primary me-2 mb-2 mb-sm-0"
+                    >
                       Track your performance
-                    </a>
+                    </Link>
                     <a
                       target="_blank"
-                      className="btn btn-outline-secondary mb-2 mb-sm-0"
+                      className="btn btn-secondary mb-2 mb-sm-0"
                       href="https://www.youtube.com/channel/UCvu6J9q1AM6q4xysGqAvVyw"
                     >
                       Video Tutorial
                     </a>
                   </div>
                 </div>
+                <h1 className="text-danger">Admin Login </h1>
+                <p>User name: admin@gmail.com</p>
+                <p>password: 12345</p>
                 <div className="row align-items-center pt-5">
                   <div className="col-6 col-md-4 col-lg-3 col-xl-2 text-center mb-5">
                     <img

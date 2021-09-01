@@ -4,11 +4,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useAlert } from "react-alert";
 import * as Yup from "yup";
 import moneySVG from "../../img/money.svg";
-
+import { useHistory } from "react-router-dom";
 import { addNewExpAction } from "../../redux/slices/expenses/expenseAction";
 import { addNewIncomeAction } from "../../redux/slices/income/incomeSlices";
 import DisabledButton from "../../components/DisabledButton";
 import redirectUser from "../../utils/redirect";
+import navigate from "../../utils/navigate";
 
 //Form validation
 const formSchema = Yup.object({
@@ -17,9 +18,10 @@ const formSchema = Yup.object({
   amount: Yup.number().required("Amount is required"),
 });
 
-const AddIncome = ({ history }) => {
+const AddIncome = () => {
   //dispatch action
   const dispatch = useDispatch();
+  const history = useHistory();
   //income
   const income = useSelector(state => state?.income);
   const { incLoading, incAppErr, incServerErr, isIncCreated } = income;
@@ -39,7 +41,7 @@ const AddIncome = ({ history }) => {
   //Redirect
   useEffect(() => {
     if (isIncCreated) {
-      redirectUser(history, "incomes");
+      navigate(history, "user-profile-income", undefined);
     }
   }, [isIncCreated]);
   return (
@@ -111,8 +113,11 @@ const AddIncome = ({ history }) => {
                   {incLoading ? (
                     <DisabledButton />
                   ) : (
-                    <button type="submit" className="btn btn-danger mb-4 w-100">
-                      Record Expense
+                    <button
+                      type="submit"
+                      className="btn btn-success mb-4 w-100"
+                    >
+                      Record Income
                     </button>
                   )}
                 </form>
